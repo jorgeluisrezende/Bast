@@ -6,8 +6,8 @@
 
 <script>
   export default {
-    name: 'bast'
-  }
+    name: 'bast',
+  };
 </script>
 
 <style>
