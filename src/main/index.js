@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron' // eslint-disable-line
+import { app, BrowserWindow, ipcMain } from 'electron' // eslint-disable-line
 
 /**
  * Set `__static` path to static files in production
@@ -21,8 +21,8 @@ function createWindow() {
     height: 563,
     useContentSize: true,
     width: 1000,
+    frame: false,
   });
-
   mainWindow.loadURL(winURL);
 
   mainWindow.on('closed', () => {
@@ -44,6 +44,21 @@ app.on('activate', () => {
   }
 });
 
+ipcMain.on('windowChange', () => {
+  if (mainWindow.isMaximized()) {
+    mainWindow.unmaximize();
+    return;
+  }
+  mainWindow.maximize();
+});
+
+ipcMain.on('close', () => {
+  app.quit();
+});
+
+ipcMain.on('minimize', () => {
+  mainWindow.minimize();
+});
 /**
  * Auto Updater
  *

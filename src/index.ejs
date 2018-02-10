@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>bast</title>
+    <link rel="stylesheet" href="../src/renderer/assets/photon/css/photon.css"/>
     <% if (htmlWebpackPlugin.options.nodeModules) { %>
       <!-- Add `node_modules/` to global paths so `require` works properly in development -->
       <script>
@@ -11,7 +12,7 @@
     <% } %>
   </head>
   <body>
-    <div id="app"></div>
+    <div class="window" id="app"></div>
     <!-- Set `__static` path to static files in production -->
     <script>
       if (process.env.NODE_ENV !== 'development') window.__static = require('path').join(__dirname, '/static').replace(/\\/g, '\\\\')
